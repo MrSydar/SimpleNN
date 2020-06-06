@@ -1,3 +1,0 @@
-SimpleNN	KEYWORD1
-floatMaxIdx	KEYWORD2
-feedForward	KEYWORD2
