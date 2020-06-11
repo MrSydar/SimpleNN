@@ -8,11 +8,32 @@
 #include "Arduino.h"
 #include "SimpleNN.h"
 
-SimpleNN::SimpleNN(unsigned int* networkStructure, unsigned int layersCount, float (*activation)(float), float* weights, float* biases) {
+SimpleNN::SimpleNN(unsigned int* networkStructure, unsigned int layersCount, float (*activation)(float), float _weights[], float biases[]) {
+    int sWeight = 0,
+        wCounter = 0,
+        weightNum = 0;
+
+    float* tmpWeights;
+
+    for (unsigned int i = 1; i < layersCount; i++) weightNum += networkStructure[i] * networkStructure[i - 1];
+    tmpWeights = new float[weightNum] {0};
+
+    for (unsigned int L = 1; L < layersCount; L++) {
+        for (unsigned int N = 0; N < networkStructure[L]; N++) {
+            for (unsigned int prevN = 0; prevN < networkStructure[L - 1]; prevN++) {
+                tmpWeights[wCounter >= weightNum ? 0 : wCounter++] =
+                    _weights[sWeight + (networkStructure[L] * prevN) + N >= weightNum ? 0 : sWeight + (networkStructure[L] * prevN) + N];
+            }
+        }
+        sWeight += networkStructure[L] * networkStructure[L - 1];
+    }
+
+    for (int i = 0; i < weightNum; i++) _weights[i] = tmpWeights[i];
+
+    this->weights = _weights;
     this->networkStructure = networkStructure;
     this->layersCount = layersCount;
     this->activation = activation;
-    this->weights = weights;
     this->biases = biases;
 
     nodes = new float* [layersCount];
