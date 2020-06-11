@@ -57,7 +57,7 @@ void loop() {
   int state;
   input[0] = analogRead(L_EYE) / 1023.0f;
   input[1] = analogRead(R_EYE) / 1023.0f;
-  input[2] = analogRead(LD) / 1023.0f
+  input[2] = analogRead(LD) / 1023.0f;
   /*
    * Writing output to variable state. Output is index of maximum value in output layer
    */
