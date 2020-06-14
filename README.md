@@ -41,3 +41,32 @@ unsigned int NNStructure[] = {
   3, 2, 4
 }
 ```
+4. Define your activation function (for exapmle we want to use Rely function):
+```
+float fRely(float x){ 
+  return x > 0 ? x : 0;
+}
+```
+5. Define neural network:
+```
+SimpleNN NeuralNetwork( NNStructure, 3, &fRely, weights, biases);
+```
+# Feedforward:
+```
+void loop() {
+  /*
+   * Reading sensors (for example, but you can use your values as you want), 
+   * normalizing values from 0.0f to 1.0f by dividing values from sensors by 1023, because values range between 0 and 1023
+   */
+  float input[3];
+  int state;
+  input[0] = analogRead(L_EYE) / 1023.0f;
+  input[1] = analogRead(R_EYE) / 1023.0f;
+  input[2] = analogRead(LD) / 1023.0f;
+  /*
+   * Reading output. Output is index of maximum value in output layer
+   */
+  state = NeuralNetwork.feedForward(input);
+  Serial.println(state);
+}
+```
