@@ -41,7 +41,7 @@ unsigned int NNStructure[] = {
   3, 2, 4
 }
 ```
-4. Define your activation function (for exapmle we want to use Rely function):
+4. Define your activation function (for exapmle Rely function):
 ```
 float fRely(float x){ 
   return x > 0 ? x : 0;
