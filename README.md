@@ -52,7 +52,7 @@ float fRely(float x){
 SimpleNN NeuralNetwork( NNStructure, 3, &fRely, weights, biases);
 ```
 # Feedforward:
-Reading sensors (for example, but you can use your values as you want), normalizing values from 0.0f to 1.0f by dividing them by 1023, because we know, that values from analog input range between 0 and 1023. Then reading output. Output is index of maximum value in output layer.
+Reading sensors (for example, but you can use your values as you want), normalizing values from 0.0f to 1.0f by dividing them by 1023, because we know, that values from analog input range between 0 and 1023. Then reading the output. Output is index of maximum value in output layer.
 ```
 float input[3];
 int state;
