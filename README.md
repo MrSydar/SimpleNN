@@ -41,7 +41,7 @@ unsigned int NNStructure[] = {
   3, 2, 4
 }
 ```
-4. Define your activation function (for exapmle Rely function):
+4. Define your activation function (for example Rely function):
 ```
 float fRely(float x){ 
   return x > 0 ? x : 0;
@@ -52,7 +52,7 @@ float fRely(float x){
 SimpleNN NeuralNetwork( NNStructure, 3, &fRely, weights, biases);
 ```
 # Feedforward:
-Reading sensors (for example, but you can use your values as you want), normalizing values from 0.0f to 1.0f by dividing them by 1023, because we know, that values from analog input range between 0 and 1023. Then reading the output. Output is index of maximum value in output layer.
+Reading sensors (just for the example. You are free to use your values as you want), normalizing values from 0.0f to 1.0f by dividing them by 1023, because we know, that values from analog input range between 0 and 1023. Then reading the output. Output is index of maximum value in output layer.
 ```
 float input[3];
 int state;
